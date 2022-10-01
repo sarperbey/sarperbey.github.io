@@ -1,0 +1,45 @@
+baseURL = "https://sarperbey.netlify.app/"
+languageCode = "en-us"
+title = "Sarperbey"
+copyright = "© Sarper Dost"
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+[params]
+	mode = "toggle"
+	useCDN = false
+	subtitle = "texts, images and links"
+
+[[params.social]]
+name = "GitHub"
+icon = "mail"
+url = "mailto:dostster (at) gmail . com"
+
+[[params.social]]
+name = "Website"
+icon = "smile"
+url = "https://www.sarperdost.com"
+
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/sarperbey/"
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
