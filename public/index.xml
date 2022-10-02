@@ -9,6 +9,17 @@
     <copyright>© Sarper Dost</copyright>
     <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://sarperbey.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About</title>
+      <link>https://sarperbey.github.io/about/</link>
+      <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://sarperbey.github.io/about/</guid>
+      <description>This blog consist of random ramblings, bookmarks, interesting stuff that I cam across etc. Currently, I&amp;rsquo;m trying to gather all the stuff scattered around.
+I might add some new functions in the future for separating English, Italian and Turkish entries.
+This blog created thanks to many open source projects. Framework by Hugo, design template by Athul.</description>
+    </item>
+    
+    <item>
       <title>Telegram Bot for  GitHub Actions</title>
       <link>https://sarperbey.github.io/posts/tg-gh/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
@@ -49,23 +60,12 @@ I was a little surprised, because though I’ve gotten that comment before, it�
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://sarperbey.github.io/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://sarperbey.github.io/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
- https://github.</description>
-    </item>
-    
-    <item>
-      <title>How to test dark mode?</title>
+      <title>Sarpi Border Checkpoint</title>
       <link>https://sarperbey.github.io/posts/post-7/</link>
       <pubDate>Sun, 18 Mar 2018 12:13:38 +0530</pubDate>
       
       <guid>https://sarperbey.github.io/posts/post-7/</guid>
-      <description>Here is how you can setup dark mode for Ink and test on various OS like iOS, Android, macOS and Windows 10.</description>
+      <description>Sarpi Border Checkpoint between Georgia and Turkey by J Mayer H Architects.</description>
     </item>
     
     <item>
