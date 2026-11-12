@@ -73,9 +73,11 @@ const {
   tags,
   hideEditPost,
   hideToc,
+  link,
 } = post.data;
 
 const { Content, headings } = await render(post);
+const linkHost = link ? new URL(link).hostname.replace(/^www\./, "") : null;
 const tocHeadings = config.features.toc && !hideToc ? headings : [];
 
 let ogImageUrl: string | undefined;
@@ -136,6 +138,19 @@ const ogImage = ogImageUrl
       </span>
       <EditPost {hideEditPost} {post} class="max-sm:hidden" />
     </div>
+
+    {
+      link && (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-accent text-accent-foreground mt-4 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-transform hover:-translate-y-0.5"
+        >
+          Visit {linkHost} ↗
+        </a>
+      )
+    }
 
     <div class="post-body mt-8">
       <PostToc headings={tocHeadings} />

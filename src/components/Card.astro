@@ -11,14 +11,12 @@ type Props = {
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
 const { title, description, link, ...props } = data;
-const href = link ?? getPostUrl(id, filePath, Astro.currentLocale);
 const host = link ? new URL(link).hostname.replace(/^www\./, "") : null;
 ---
 
 <li class="link-card">
   <a
-    href={href}
-    {...(link ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    href={getPostUrl(id, filePath, Astro.currentLocale)}
     class:list={[
       "text-accent inline-block text-lg font-medium",
       "decoration-dashed underline-offset-4 hover:underline",
@@ -30,6 +28,17 @@ const host = link ? new URL(link).hostname.replace(/^www\./, "") : null;
     </Heading>
   </a>
   <Datetime {...props} />
-  {host && <p class="text-sm">{host}</p>}
   <p>{description}</p>
+  {
+    link && (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-accent mt-1 inline-block text-sm underline decoration-dashed underline-offset-4"
+      >
+        {host} ↗
+      </a>
+    )
+  }
 </li>
