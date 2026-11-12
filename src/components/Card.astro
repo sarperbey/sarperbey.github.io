@@ -15,7 +15,7 @@ const href = link ?? getPostUrl(id, filePath, Astro.currentLocale);
 const host = link ? new URL(link).hostname.replace(/^www\./, "") : null;
 ---
 
-<li class="my-6">
+<li class="link-card">
   <a
     href={href}
     {...(link ? { target: "_blank", rel: "noopener noreferrer" } : {})}

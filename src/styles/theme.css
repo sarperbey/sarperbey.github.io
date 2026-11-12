@@ -1,3 +1,4 @@
+
 /* Register design tokens for Tailwind v4 */
 @theme inline {
   --color-background: var(--background);
@@ -13,22 +14,38 @@
 /* Light theme values */
 :root,
 [data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
+  --background: #fffdf6;
+  --foreground: #14122b;
+  --accent: #2f4bff;
   --accent-foreground: #ffffff;
-  --muted: #e6e6e6;
-  --muted-foreground: #6b7280;
-  --border: #ece9e9;
+  --muted: #ece9df;
+  --muted-foreground: #5c5a7a;
+  --border: #e6e4f5;
+
+  --pop-yellow: #ffd23f;
+  --pop-pink: #ff8fb8;
+  --pop-mint: #7ff0c8;
+  --pop-coral: #ff5a4d;
+  --hover-1: #fff0a8;
+  --hover-2: #c8f7e4;
+  --hover-3: #ffd3e6;
 }
 
 /* Dark theme values */
 [data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --accent-foreground: #ffffff;
-  --muted: #343f60;
-  --muted-foreground: #afb9ca;
-  --border: #ab4b08;
+  --background: #14122b;
+  --foreground: #f4f2ff;
+  --accent: #8fa2ff;
+  --accent-foreground: #14122b;
+  --muted: #2a2650;
+  --muted-foreground: #b4b1d6;
+  --border: #2f2b5c;
+
+  --pop-yellow: #ffd23f;
+  --pop-pink: #ff8fb8;
+  --pop-mint: #7ff0c8;
+  --pop-coral: #ff6f63;
+  --hover-1: #3d3a12;
+  --hover-2: #123a31;
+  --hover-3: #40223a;
 }

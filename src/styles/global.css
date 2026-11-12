@@ -37,3 +37,80 @@
 :target {
   scroll-margin-block: 1rem;
 }
+
+/* ---- Bright design ---- */
+.hero-title {
+  background: linear-gradient(transparent 62%, var(--pop-mint) 62%);
+}
+[data-theme="dark"] .hero-title {
+  background: linear-gradient(transparent 62%, rgb(127 240 200 / 0.35) 62%);
+}
+
+#menu-items .active-nav {
+  text-decoration-color: var(--pop-coral);
+}
+#menu-items > li > a:not(.active-nav) {
+  background: linear-gradient(var(--pop-coral), var(--pop-coral)) 0 100% / 0
+    2px no-repeat;
+  transition:
+    background-size 0.25s ease,
+    color 0.15s;
+}
+#menu-items > li > a:not(.active-nav):hover {
+  background-size: 100% 2px;
+}
+
+.link-card {
+  margin: 1rem -0.75rem;
+  padding: 0.75rem;
+  border-radius: 14px;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+.link-card:hover {
+  transform: translateY(-2px);
+}
+.link-card:nth-child(3n + 1):hover {
+  background: var(--hover-1);
+}
+.link-card:nth-child(3n + 2):hover {
+  background: var(--hover-2);
+}
+.link-card:nth-child(3n):hover {
+  background: var(--hover-3);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+header,
+#main-content h1,
+#main-content > section,
+.link-card {
+  animation: rise 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+.link-card:nth-child(1) { animation-delay: 0.12s; }
+.link-card:nth-child(2) { animation-delay: 0.2s; }
+.link-card:nth-child(3) { animation-delay: 0.28s; }
+.link-card:nth-child(n + 4) { animation-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  header,
+  #main-content h1,
+  #main-content > section,
+  .link-card {
+    animation: none;
+  }
+  .link-card,
+  #menu-items > li > a {
+    transition: none;
+  }
+}
