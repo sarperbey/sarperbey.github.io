@@ -1,166 +1,104 @@
-# AstroPaper 📄
+# sarperbey.github.io
 
-![AstroPaper](public/default-og.jpg)
-[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/community/file/1356898632249991861)
-![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![GitHub](https://img.shields.io/github/license/satnaing/astro-paper?color=%232F3741&style=for-the-badge)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge)](https://conventionalcommits.org)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge)](http://commitizen.github.io/cz-cli/)
+A personal link blog: curated articles and links in English, Italian and Turkish, plus occasional short notes. Built with [Astro](https://astro.build) and the [AstroPaper](https://github.com/satnaing/astro-paper) theme, edited through [Tina CMS](https://tina.io) and hosted on GitHub Pages.
 
-AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro blog theme. This theme is designed and crafted based on [my personal blog](https://satnaing.dev/blog).
+- Site: https://sarperbey.github.io
+- Editor (Tina): https://sarperbey.github.io/admin/index.html
 
-Read [the blog posts](https://astro-paper.pages.dev/posts/) or check [the README Documentation Section](#-documentation) for more info.
+## How it works
 
-## 🔥 Features
+```
+Raindrop (inbox)  ->  import script  ->  Markdown posts in this repo  ->  GitHub Actions  ->  GitHub Pages
+                                              ^
+                                     Tina CMS (notes, edits)
+```
 
-- [x] type-safe markdown
-- [x] super fast performance
-- [x] accessible (Keyboard/VoiceOver)
-- [x] responsive (mobile ~ desktops)
-- [x] SEO-friendly
-- [x] light & dark mode
-- [x] static search ([Pagefind](https://pagefind.app/))
-- [x] draft posts & pagination
-- [x] sitemap & rss feed
-- [x] MDX support
-- [x] table of contents beside posts
-- [x] followed best practices
-- [x] highly customizable
-- [x] dynamic OG image generation for blog posts ([Blog Post](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/))
-- [x] i18n ready
+- Links are saved to **Raindrop.io** from Firefox or the Android share sheet.
+- A local script turns tagged bookmarks into Markdown files in `src/content/posts/`.
+- Longer posts, short notes and edits are written in Tina, which edits the same files.
+- Every push to `main` is built and deployed by GitHub Actions.
 
-_Note: I've tested screen-reader accessibility of AstroPaper using **VoiceOver** on Mac and **TalkBack** on Android. I couldn't test all other screen-readers out there. However, accessibility enhancements in AstroPaper should be working fine on others as well._
+Everything in this repository is public. Drafts and private material stay in Raindrop or elsewhere, never here.
 
-## ✅ Lighthouse Score
+## Tag scheme (Raindrop)
 
-<p align="center">
-  <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fastro-paper.pages.dev%2F&form_factor=desktop">
-    <img width="710" alt="AstroPaper Lighthouse Score" src="AstroPaper-lighthouse-score.svg">
-  </a>
-</p>
+| Tag | Meaning |
+|---|---|
+| `publish` | selected for the site (the script replaces it with `published` after import) |
+| `lang-en` / `lang-it` / `lang-tr` | language of the article (exactly one) |
+| `cat-…` | category (one or two) |
 
-## 🚀 Project Structure
+Categories:
 
-Inside of AstroPaper, you'll see the following folders and files:
+| Tag | Topic |
+|---|---|
+| `cat-music` | Music |
+| `cat-arts` | Arts & design |
+| `cat-culture` | Film, TV & books |
+| `cat-society` | Society, law & economy |
+| `cat-politics` | Politics & policy |
+| `cat-history` | History & geography |
+| `cat-tech` | Technology & software |
+| `cat-science` | Science & nature |
+| `cat-life` | Life, food & travel |
+
+The bookmark's **note** field becomes the post description. It is required, so write one short sentence per link.
+
+## Importing links
+
+Run from the repo root. The token is read from an environment variable and must never be committed.
 
 ```bash
-/
-├── public/
-│   ├── pagefind/          # auto-generated on build
-│   ├── favicon.svg
-│   └── default-og.jpg
-├── src/
-│   ├── assets/
-│   │   ├── icons/
-│   │   └── images/
-│   ├── components/
-│   ├── content/
-│   │   ├── pages/
-│   │   │   └── about.md
-│   │   └── posts/
-│   │       └── some-blog-posts.md
-│   ├── i18n/
-│   ├── layouts/
-│   ├── pages/
-│   ├── scripts/
-│   ├── styles/
-│   ├── types/
-│   ├── utils/
-│   ├── config.ts
-│   └── content.config.ts
-├── astro-paper.config.ts  # user-defined configurations
-└── astro.config.ts
+export RAINDROP_TOKEN=your-token
+
+node scripts/import-raindrop.mjs --check        # validate tags and test links, write nothing
+node scripts/import-raindrop.mjs --dry          # show which files would be written
+node scripts/import-raindrop.mjs --limit 60     # write the 60 oldest valid links, original dates
+node scripts/import-raindrop.mjs --drip 3       # future dates, 3 posts per week from tomorrow
 ```
 
-All blog posts are stored in the `src/content/posts/` directory. You can organise posts into subdirectories — the subdirectory name becomes part of the post URL.
+Extra option: `--no-linkcheck` skips the dead-link test. Links already in the repo are skipped. After each file is written, the bookmark's tag changes from `publish` to `published`.
 
-## 📖 Documentation
+Posts dated in the future stay hidden until a build runs after that date, so a scheduled daily rebuild in the deploy workflow makes `--drip` work on its own.
 
-Documentation can be read in two formats\_ _markdown_ & _blog post_.
+## Post format
 
-- Configuration - [markdown](src/content/posts/how-to-configure-astropaper-theme.md) | [blog post](https://astro-paper.pages.dev/posts/how-to-configure-astropaper-theme/)
-- Add Posts - [markdown](src/content/posts/adding-new-post.md) | [blog post](https://astro-paper.pages.dev/posts/adding-new-posts-in-astropaper-theme/)
-- Customize Color Schemes - [markdown](src/content/posts/customizing-astropaper-theme-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/)
-- Predefined Color Schemes - [markdown](src/content/posts/predefined-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/predefined-color-schemes/)
-
-## 💻 Tech Stack
-
-**Main Framework** - [Astro](https://astro.build/)  
-**Type Checking** - [TypeScript](https://www.typescriptlang.org/)  
-**Styling** - [TailwindCSS](https://tailwindcss.com/)  
-**UI/UX** - [Figma Design File](https://www.figma.com/community/file/1356898632249991861)  
-**Static Search** - [Pagefind](https://pagefind.app/)  
-**Icons** - [Tablers](https://tabler-icons.io/)  
-**Code Formatting** - [Prettier](https://prettier.io/)  
-**Deployment** - [Cloudflare Pages](https://pages.cloudflare.com/)  
-**Linting** - [ESLint](https://eslint.org)  
-**Dynamic OG images** - [Satori](https://github.com/vercel/satori) + [Sharp](https://sharp.pixelplumbing.com/) + [Astro Fonts](https://docs.astro.build/en/guides/fonts/)
-
-## 👨🏻‍💻 Running Locally
-
-You can start using this project locally by running the following command in your desired directory:
-
-```bash
-# pnpm
-pnpm create astro@latest --template satnaing/astro-paper
-
-# npm
-npm create astro@latest -- --template satnaing/astro-paper
-
-# yarn
-yarn create astro --template satnaing/astro-paper
-
-# bun
-bun create astro@latest -- --template satnaing/astro-paper
-```
-
-Then start the project by running the following commands:
-
-```bash
-# install dependencies if you haven't done so in the previous step.
-pnpm install
-
-# start running the project
-pnpm dev
-```
-
-## Google Site Verification (optional)
-
-You can add your [Google Site Verification HTML tag](https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag) by setting `site.googleVerification` in `astro-paper.config.ts`:
-
-```ts file="astro-paper.config.ts"
-export default defineAstroPaperConfig({
-  site: {
-    // ...
-    googleVerification: "your-google-site-verification-value",
-  },
-  // ...
-});
-```
-
-> See [this discussion](https://github.com/satnaing/astro-paper/discussions/334#discussioncomment-10139247) for adding AstroPaper to the Google Search Console.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command          | Action                                                                                                                           |
-| :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm install`   | Installs dependencies                                                                                                            |
-| `pnpm dev`       | Starts local dev server at `localhost:4321`                                                                                      |
-| `pnpm build`     | Type-checks, builds the site, runs Pagefind indexing, and copies the index to `public/pagefind/`                                 |
-| `pnpm preview`   | Preview your build locally, before deploying                                                                                     |
-| `pnpm sync`      | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
-| `pnpm astro ...` | Run CLI commands like `astro add`, `astro check`                                                                                 |
-
-## ✨ Feedback & Suggestions
-
-If you have any suggestions/feedback, you can contact me via [my email](mailto:satnaingdev+astropaper@gmail.com). Alternatively, feel free to open an issue if you find bugs or want to request new features.
-
-## 📜 License
-
-Licensed under the MIT License, Copyright © 2026
-
+```yaml
 ---
+title: "Article title"
+pubDatetime: 2026-11-14T08:00:00.000Z
+description: "One-sentence note."
+link: "https://example.com/article"
+lang: en            # en | it | tr
+tags:
+  - tech
+draft: false
+---
+```
 
-Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).
+Posts without a `link` field are regular notes.
+
+## Development
+
+```bash
+pnpm install
+pnpm dev        # local site and Tina editor
+pnpm build      # tinacms build, astro check, astro build, pagefind
+```
+
+After changing the Tina schema (`tina/config.ts`), commit the regenerated `tina/tina-lock.json` too, otherwise the CI build fails with a schema mismatch against TinaCloud.
+
+## Project layout
+
+| Path | Purpose |
+|---|---|
+| `src/content/posts/` | all posts (Markdown) |
+| `src/content.config.ts` | content schema |
+| `tina/config.ts` | Tina CMS collections and fields |
+| `scripts/import-raindrop.mjs` | Raindrop import script |
+| `src/config.ts`, `src/constants.ts` | site title, description and social links |
+| `.github/workflows/` | build and deploy |
+
+## Credits
+
+Theme: [AstroPaper](https://github.com/satnaing/astro-paper) by Sat Naing, MIT licensed.
