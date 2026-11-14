@@ -37,6 +37,7 @@ export default defineConfig({
           { type: "datetime", name: "modDatetime", label: "Modified" },
           { type: "image", name: "ogImage", label: "Social image" },
           { type: "rich-text", name: "body", label: "Body", isBody: true },
+          { type: "string", name: "lang", label: "Language", options: ["en", "it", "tr"] },
         ],
       },
     ],
