@@ -8,4 +8,3 @@ tags:
   - politics
 draft: false
 ---
-

@@ -22,25 +22,25 @@ Everything in this repository is public. Drafts and private material stay in Rai
 
 ## Tag scheme (Raindrop)
 
-| Tag | Meaning |
-|---|---|
-| `publish` | selected for the site (the script replaces it with `published` after import) |
-| `lang-en` / `lang-it` / `lang-tr` | language of the article (exactly one) |
-| `cat-…` | category (one or two) |
+| Tag                               | Meaning                                                                      |
+| --------------------------------- | ---------------------------------------------------------------------------- |
+| `publish`                         | selected for the site (the script replaces it with `published` after import) |
+| `lang-en` / `lang-it` / `lang-tr` | language of the article (exactly one)                                        |
+| `cat-…`                           | category (one or two)                                                        |
 
 Categories:
 
-| Tag | Topic |
-|---|---|
-| `cat-music` | Music |
-| `cat-arts` | Arts & design |
-| `cat-culture` | Film, TV & books |
-| `cat-society` | Society, law & economy |
-| `cat-politics` | Politics & policy |
-| `cat-history` | History & geography |
-| `cat-tech` | Technology & software |
-| `cat-science` | Science & nature |
-| `cat-life` | Life, food & travel |
+| Tag            | Topic                  |
+| -------------- | ---------------------- |
+| `cat-music`    | Music                  |
+| `cat-arts`     | Arts & design          |
+| `cat-culture`  | Film, TV & books       |
+| `cat-society`  | Society, law & economy |
+| `cat-politics` | Politics & policy      |
+| `cat-history`  | History & geography    |
+| `cat-tech`     | Technology & software  |
+| `cat-science`  | Science & nature       |
+| `cat-life`     | Life, food & travel    |
 
 The bookmark's **note** field becomes the post description. It is required, so write one short sentence per link.
 
@@ -69,7 +69,7 @@ title: "Article title"
 pubDatetime: 2026-11-14T08:00:00.000Z
 description: "One-sentence note."
 link: "https://example.com/article"
-lang: en            # en | it | tr
+lang: en # en | it | tr
 tags:
   - tech
 draft: false
@@ -90,14 +90,14 @@ After changing the Tina schema (`tina/config.ts`), commit the regenerated `tina/
 
 ## Project layout
 
-| Path | Purpose |
-|---|---|
-| `src/content/posts/` | all posts (Markdown) |
-| `src/content.config.ts` | content schema |
-| `tina/config.ts` | Tina CMS collections and fields |
-| `scripts/import-raindrop.mjs` | Raindrop import script |
+| Path                                | Purpose                                  |
+| ----------------------------------- | ---------------------------------------- |
+| `src/content/posts/`                | all posts (Markdown)                     |
+| `src/content.config.ts`             | content schema                           |
+| `tina/config.ts`                    | Tina CMS collections and fields          |
+| `scripts/import-raindrop.mjs`       | Raindrop import script                   |
 | `src/config.ts`, `src/constants.ts` | site title, description and social links |
-| `.github/workflows/` | build and deploy |
+| `.github/workflows/`                | build and deploy                         |
 
 ## Credits
 

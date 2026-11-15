@@ -13,11 +13,7 @@ import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { getUniqueTags } from "@/utils/getUniqueTags";
 import { slugifyStr } from "@/utils/slugify";
-import {
-  CATEGORIES,
-  categoryColor,
-  categoryLabel,
-} from "@/utils/categories";
+import { CATEGORIES, categoryColor, categoryLabel } from "@/utils/categories";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -34,7 +30,9 @@ const listPosts = sortedPosts
   .slice(0, postsConfig.perIndex);
 const usedTags = new Set(getUniqueTags(posts).map(({ tag }) => tag));
 const topics = CATEGORIES.filter(({ slug }) => usedTags.has(slug));
-const bannerCategory = banner ? slugifyStr(banner.data.tags[0] ?? "others") : "";
+const bannerCategory = banner
+  ? slugifyStr(banner.data.tags[0] ?? "others")
+  : "";
 const homePath = getRelativeLocaleUrl(locale, "");
 ---
 
