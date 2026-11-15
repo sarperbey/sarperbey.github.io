@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 // Imports Raindrop bookmarks tagged "publish" into src/content/posts/*.md
 //
 // Usage (from the repo root):
