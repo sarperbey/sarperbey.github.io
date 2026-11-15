@@ -10,9 +10,16 @@ import IconX from "@/assets/icons/IconX.svg";
 import LinkButton from "./LinkButton.astro";
 import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
+import { getCollection } from "astro:content";
+import { getUniqueTags } from "@/utils/getUniqueTags";
+import { CATEGORIES, categoryColor } from "@/utils/categories";
 import config from "@/config";
 
 const { site, features } = config;
+
+const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+const usedTags = new Set(getUniqueTags(allPosts).map(({ tag }) => tag));
+const menuCategories = CATEGORIES.filter(({ slug }) => usedTags.has(slug));
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
@@ -82,13 +89,51 @@ const isActive = (path: string) => {
             {t.nav.posts}
           </a>
         </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "tags")}
-            class:list={{ "active-nav": isActive("/tags") }}
-          >
-            {t.nav.tags}
-          </a>
+        <li class="relative col-span-2">
+          <details id="category-menu" class="group">
+            <summary
+              class:list={[
+                "hover:text-accent block cursor-pointer list-none px-4 py-3 text-center font-medium sm:px-2 sm:py-1 [&::-webkit-details-marker]:hidden",
+                { "active-nav": isActive("/categories") },
+              ]}
+            >
+              {t.nav.tags}
+              <span
+                aria-hidden="true"
+                class="inline-block text-xs transition-transform group-open:rotate-180"
+                >▾</span
+              >
+            </summary>
+            <ul
+              class="border-border bg-background z-30 mt-1 rounded-xl border p-2 text-start shadow-lg sm:absolute sm:end-0 sm:w-60"
+            >
+              {
+                menuCategories.map(({ slug, label }) => (
+                  <li>
+                    <a
+                      href={getRelativeLocaleUrl(locale, `categories/${slug}`)}
+                      class="hover:bg-muted flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="size-2.5 shrink-0 rounded-full"
+                        style={`background: ${categoryColor(slug)}`}
+                      />
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
+              <li class="border-border mt-1 border-t pt-1">
+                <a
+                  href={getRelativeLocaleUrl(locale, "categories")}
+                  class="hover:bg-muted block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+                >
+                  All categories →
+                </a>
+              </li>
+            </ul>
+          </details>
         </li>
         <li class="col-span-2">
           <a
@@ -218,8 +263,27 @@ const isActive = (path: string) => {
     });
   }
 
+  // Bound once; looks the menu up on each event so it survives page swaps.
+  function closeCategoryMenu() {
+    const menu = () =>
+      document.querySelector<HTMLDetailsElement>("#category-menu");
+    document.addEventListener("click", e => {
+      const d = menu();
+      if (d?.open && !d.contains(e.target as Node)) d.open = false;
+    });
+    document.addEventListener("keydown", e => {
+      const d = menu();
+      if (e.key === "Escape" && d?.open) {
+        d.open = false;
+        d.querySelector("summary")?.focus();
+      }
+    });
+  }
+
   toggleNav();
   document.addEventListener("astro:after-swap", toggleNav);
+
+  closeCategoryMenu();
 
   handleSkipToContent();
   document.addEventListener("astro:after-swap", handleSkipToContent);

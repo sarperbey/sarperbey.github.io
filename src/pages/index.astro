@@ -110,7 +110,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
         >
           {topics.map(({ slug, label }) => (
             <a
-              href={getRelativeLocaleUrl(locale, `tags/${slug}`)}
+              href={getRelativeLocaleUrl(locale, `categories/${slug}`)}
               class="u-sweep"
               style={`color: ${categoryColor(slug)}`}
             >

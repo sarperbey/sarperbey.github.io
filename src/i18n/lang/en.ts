@@ -4,7 +4,7 @@ export default {
   nav: {
     home: "Home",
     posts: "Posts",
-    tags: "Tags",
+    tags: "Categories",
     about: "About",
     archives: "Archives",
     search: "Search",
@@ -15,7 +15,7 @@ export default {
     sharePostIntro: "Share this post:",
     sharePostOn: "Share this post on {{platform}}",
     sharePostViaEmail: "Share this post via email",
-    tagLabel: "Tags",
+    tagLabel: "Categories",
     backToTop: "Back to top",
     tableOfContents: "Table of contents",
     goBack: "Go back",
@@ -39,11 +39,11 @@ export default {
     allRightsReserved: "All rights reserved.",
   },
   pages: {
-    tagTitle: "Tag",
-    tagDesc: "All the articles with the tag",
+    tagTitle: "Category",
+    tagDesc: "All the posts in the category",
 
-    tagsTitle: "Tags",
-    tagsDesc: "All the tags used in posts.",
+    tagsTitle: "Categories",
+    tagsDesc: "Browse posts by category.",
 
     postsTitle: "Posts",
     postsDesc: "All my posts, links and notes.",
