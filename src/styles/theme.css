@@ -8,44 +8,61 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --font-app: var(--font-google-sans-code);
+  --font-app: var(--font-inter);
+  --font-display: var(--font-instrument-serif);
+  --font-mono: var(--font-google-sans-code);
 }
 
 /* Light theme values */
 :root,
 [data-theme="light"] {
-  --background: #fffdf6;
-  --foreground: #14122b;
-  --accent: #2f4bff;
+  --background: #fbf8f2;
+  --foreground: #1a1d22;
+  --accent: #c23a2a;
   --accent-foreground: #ffffff;
-  --muted: #ece9df;
-  --muted-foreground: #5c5a7a;
-  --border: #e6e4f5;
+  --muted: #efe9dc;
+  --muted-foreground: #5b6068;
+  --border: #e2dccf;
 
-  --pop-yellow: #ffd23f;
+  /* category colors (contrast-checked on the light background) */
+  --cat-music: #c23a2a;
+  --cat-arts: #6d4ae0;
+  --cat-culture: #8a6a00;
+  --cat-society: #0f7b63;
+  --cat-politics: #c2305f;
+  --cat-history: #b05a00;
+  --cat-tech: #1f6fb5;
+  --cat-science: #3a7d1a;
+  --cat-life: #8a6a00;
+
+  --pop-yellow: #ffd166;
   --pop-pink: #ff8fb8;
   --pop-mint: #7ff0c8;
-  --pop-coral: #ff5a4d;
-  --hover-1: #fff0a8;
-  --hover-2: #c8f7e4;
-  --hover-3: #ffd3e6;
+  --pop-coral: #c23a2a;
 }
 
 /* Dark theme values */
 [data-theme="dark"] {
-  --background: #14122b;
-  --foreground: #f4f2ff;
-  --accent: #8fa2ff;
-  --accent-foreground: #14122b;
-  --muted: #2a2650;
-  --muted-foreground: #b4b1d6;
-  --border: #2f2b5c;
+  --background: #14171c;
+  --foreground: #ece8df;
+  --accent: #ff6b5b;
+  --accent-foreground: #14171c;
+  --muted: #1d222a;
+  --muted-foreground: #a5a9b0;
+  --border: #2c323b;
 
-  --pop-yellow: #ffd23f;
+  --cat-music: #ff6b5b;
+  --cat-arts: #a78bfa;
+  --cat-culture: #ffd166;
+  --cat-society: #7fd1b9;
+  --cat-politics: #ff8fb1;
+  --cat-history: #ffb86b;
+  --cat-tech: #6ec1ff;
+  --cat-science: #9be15d;
+  --cat-life: #ffd166;
+
+  --pop-yellow: #ffd166;
   --pop-pink: #ff8fb8;
   --pop-mint: #7ff0c8;
-  --pop-coral: #ff6f63;
-  --hover-1: #3d3a12;
-  --hover-2: #123a31;
-  --hover-3: #40223a;
+  --pop-coral: #ff6b5b;
 }

@@ -40,10 +40,38 @@
 
 /* ---- Bright design ---- */
 .hero-title {
-  background: linear-gradient(transparent 62%, var(--pop-mint) 62%);
+  font-family: var(--font-display);
+  font-weight: 400;
 }
-[data-theme="dark"] .hero-title {
-  background: linear-gradient(transparent 62%, rgb(127 240 200 / 0.35) 62%);
+
+body {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* underline that sweeps in on hover */
+.u-sweep {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px
+    no-repeat;
+  transition: background-size 0.3s ease;
+  padding-bottom: 2px;
+}
+.u-sweep:hover {
+  background-size: 100% 2px;
+}
+
+/* featured banner (same yellow in light and dark mode) */
+.feature-banner {
+  display: block;
+  background: #ffd166;
+  color: #14171c;
+  border-radius: 20px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+.feature-banner:hover {
+  transform: translateY(-4px);
 }
 
 #menu-items .active-nav {
@@ -61,24 +89,9 @@
 }
 
 .link-card {
-  margin: 1rem -0.75rem;
-  padding: 0.75rem;
-  border-radius: 14px;
-  transition:
-    background-color 0.25s ease,
-    transform 0.25s ease;
-}
-.link-card:hover {
-  transform: translateY(-2px);
-}
-.link-card:nth-child(3n + 1):hover {
-  background: var(--hover-1);
-}
-.link-card:nth-child(3n + 2):hover {
-  background: var(--hover-2);
-}
-.link-card:nth-child(3n):hover {
-  background: var(--hover-3);
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--border);
+  break-inside: avoid;
 }
 
 @keyframes rise {
@@ -109,7 +122,9 @@ header,
   .link-card {
     animation: none;
   }
-  .link-card,
+  .u-sweep,
+  .feature-banner,
+  body,
   #menu-items > li > a {
     transition: none;
   }

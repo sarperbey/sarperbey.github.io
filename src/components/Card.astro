@@ -2,6 +2,8 @@
 import type { CollectionEntry } from "astro:content";
 import { getPostUrl } from "@/utils/getPostPaths";
 import { toTransitionName } from "@/utils/toTransitionName";
+import { slugifyStr } from "@/utils/slugify";
+import { categoryColor, categoryLabel } from "@/utils/categories";
 import Datetime from "./Datetime.astro";
 
 type Props = {
@@ -10,25 +12,31 @@ type Props = {
 
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
-const { title, description, link, ...props } = data;
+const { title, description, link, lang, ...props } = data;
 const host = link ? new URL(link).hostname.replace(/^www\./, "") : null;
+const category = slugifyStr(data.tags[0] ?? "others");
 ---
 
 <li class="link-card">
+  <div
+    class="text-xs font-medium tracking-wider uppercase"
+    style={`color: ${categoryColor(category)}`}
+  >
+    {categoryLabel(category)} · {lang}
+  </div>
   <a
     href={getPostUrl(id, filePath, Astro.currentLocale)}
-    class:list={[
-      "text-accent inline-block text-lg font-medium",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
-    ]}
+    class="u-sweep inline-block"
   >
-    <Heading transition:name={toTransitionName(id)}>
+    <Heading
+      class="font-display mt-1 text-2xl leading-tight"
+      transition:name={toTransitionName(id)}
+    >
       {title}
     </Heading>
   </a>
   <Datetime {...props} />
-  <p>{description}</p>
+  <p class="text-muted-foreground">{description}</p>
   {
     link && (
       <a

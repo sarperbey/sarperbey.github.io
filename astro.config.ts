@@ -68,6 +68,24 @@ export default defineConfig({
   },
   fonts: [
     {
+      name: "Inter",
+      cssVariable: "--font-inter",
+      provider: fontProviders.google(),
+      fallbacks: ["sans-serif"],
+      weights: [400, 500, 600],
+      styles: ["normal"],
+      formats: ["woff2"],
+    },
+    {
+      name: "Instrument Serif",
+      cssVariable: "--font-instrument-serif",
+      provider: fontProviders.google(),
+      fallbacks: ["Georgia", "serif"],
+      weights: [400],
+      styles: ["normal", "italic"],
+      formats: ["woff2"],
+    },
+    {
       name: "Google Sans Code",
       cssVariable: "--font-google-sans-code",
       provider: fontProviders.google(),
