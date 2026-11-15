@@ -45,9 +45,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
     class="app-layout my-1"
   >
     <section id="hero" class="border-border border-b pt-8 pb-6">
-      <h1
-        class="hero-title my-4 inline-block text-5xl leading-tight sm:my-8 sm:text-6xl"
-      >
+      <h1 class="hero-title my-4 inline-block text-5xl leading-tight sm:my-8 sm:text-6xl">
         Read slowly. <span class="text-accent">Three languages.</span>
       </h1>{" "}
       <a
@@ -64,73 +62,64 @@ const homePath = getRelativeLocaleUrl(locale, "");
         />
         <span class="sr-only">RSS Feed</span>
       </a>
-
       <p class="text-muted-foreground max-w-xl text-lg">
         Links I saved with a short note, plus longer posts and images.
       </p>
-      {
-        socials.length > 0 && (
-          <div class="mt-4 flex max-sm:flex-col sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">
-              {t.home.socialLinks}:
-            </div>
-            <Socials />
+      {socials.length > 0 && (
+        <div class="mt-4 flex max-sm:flex-col sm:items-center">
+          <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">
+            {t.home.socialLinks}:
           </div>
-        )
-      }
+          <Socials />
+        </div>
+      )}
     </section>
 
-    {
-      banner && (
-        <section id="featured" class="pt-10 pb-2">
-          <a
-            href={getPostUrl(banner.id, banner.filePath, Astro.currentLocale)}
-            class="feature-banner"
-          >
-            <div class="text-xs font-medium tracking-widest uppercase">
-              {banner.data.featured ? `${t.home.featured} · ` : ""}
-              {categoryLabel(bannerCategory)} · {banner.data.lang}
-            </div>
-            <h2 class="font-display my-3 text-4xl leading-tight sm:text-5xl">
-              {banner.data.title}
-            </h2>
-            <p class="max-w-xl text-lg">{banner.data.description}</p>
-          </a>
-        </section>
-      )
-    }
-
-    {
-      topics.length > 0 && (
-        <nav
-          aria-label="Topics"
-          class="flex flex-wrap gap-x-6 gap-y-2 pt-8 pb-2 text-[0.95rem]"
+    {banner && (
+      <section id="featured" class="pt-10 pb-2">
+        <a
+          href={getPostUrl(banner.id, banner.filePath, Astro.currentLocale)}
+          class="feature-banner"
         >
-          {topics.map(({ slug, label }) => (
-            <a
-              href={getRelativeLocaleUrl(locale, `categories/${slug}`)}
-              class="u-sweep"
-              style={`color: ${categoryColor(slug)}`}
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
-      )
-    }
+          <div class="text-xs font-medium tracking-widest uppercase">
+            {banner.data.featured ? `${t.home.featured} · ` : ""}
+            {categoryLabel(bannerCategory)} · {banner.data.lang}
+          </div>
+          <h2 class="font-display my-3 text-4xl leading-tight sm:text-5xl">
+            {banner.data.title}
+          </h2>
+          <p class="max-w-xl text-lg">{banner.data.description}</p>
+        </a>
+      </section>
+    )}
 
-    {
-      listPosts.length > 0 && (
-        <section id="recent-posts" class="pt-6 pb-6">
-          <h2 class="sr-only">{t.home.recentPosts}</h2>
-          <ul class="sm:columns-2 sm:gap-14">
-            {listPosts.map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
+    {topics.length > 0 && (
+      <nav
+        aria-label="Topics"
+        class="flex flex-wrap gap-x-6 gap-y-2 pt-8 pb-2 text-[0.95rem]"
+      >
+        {topics.map(({ slug, label }) => (
+          <a
+            href={getRelativeLocaleUrl(locale, `categories/${slug}`)}
+            class="u-sweep"
+            style={`color: ${categoryColor(slug)}`}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+    )}
+
+    {listPosts.length > 0 && (
+      <section id="recent-posts" class="pt-6 pb-6">
+        <h2 class="sr-only">{t.home.recentPosts}</h2>
+        <ul class="sm:columns-2 sm:gap-14">
+          {listPosts.map(data => (
+            <Card variant="h3" {...data} />
+          ))}
+        </ul>
+      </section>
+    )}
 
     <div class="my-8 text-center">
       <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
