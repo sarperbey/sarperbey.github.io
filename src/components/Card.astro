@@ -37,16 +37,14 @@ const category = slugifyStr(data.tags[0] ?? "others");
   </a>
   <Datetime {...props} />
   <p class="text-muted-foreground">{description}</p>
-  {
-    link && (
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:text-accent mt-1 inline-block text-sm underline decoration-dashed underline-offset-4"
-      >
-        {host} ↗
-      </a>
-    )
-  }
+  {link && (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hover:text-accent mt-1 inline-block text-sm underline decoration-dashed underline-offset-4"
+    >
+      {host} ↗
+    </a>
+  )}
 </li>
