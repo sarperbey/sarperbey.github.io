@@ -9,7 +9,6 @@ import { getPostSlug, getPostUrl } from "@/utils/getPostPaths";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { slugifyStr } from "@/utils/slugify";
 import { categoryColor, categoryLabel } from "@/utils/categories";
-import { toTransitionName } from "@/utils/toTransitionName";
 import EditPost from "./_components/EditPost.astro";
 import ShareLinks from "./_components/ShareLinks.astro";
 import BackButton from "./_components/BackButton.astro";
@@ -121,10 +120,7 @@ const ogImage = ogImageUrl
     class:list={["app-layout", { "mt-8": !config.features.showBackButton }]}
     data-pagefind-body
   >
-    <h1
-      style={{ viewTransitionName: toTransitionName(post.id) }}
-      class="font-display mt-2 inline-block text-4xl leading-tight sm:text-5xl"
-    >
+    <h1 class="font-display mt-2 inline-block text-4xl leading-tight sm:text-5xl">
       {title}
     </h1>
 

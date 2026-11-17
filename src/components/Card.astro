@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getPostUrl } from "@/utils/getPostPaths";
-import { toTransitionName } from "@/utils/toTransitionName";
 import { slugifyStr } from "@/utils/slugify";
 import { categoryColor, categoryLabel } from "@/utils/categories";
 import Datetime from "./Datetime.astro";
@@ -22,10 +21,7 @@ const category = slugifyStr(data.tags[0] ?? "others");
     href={getPostUrl(id, filePath, Astro.currentLocale)}
     class="u-sweep link-card-main inline-block"
   >
-    <Heading
-      class="font-display text-[1.75rem] leading-tight sm:text-3xl"
-      transition:name={toTransitionName(id)}
-    >
+    <Heading class="font-display text-[1.75rem] leading-tight sm:text-3xl">
       {title}
     </Heading>
   </a>

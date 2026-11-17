@@ -15,3 +15,6 @@
 
 # Ignore MDX files
 *.mdx
+
+# Imported and CMS-edited posts (written by scripts/import-raindrop.mjs and Tina)
+/src/content/posts/
