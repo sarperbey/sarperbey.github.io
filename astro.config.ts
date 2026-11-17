@@ -86,6 +86,15 @@ export default defineConfig({
       formats: ["woff2"],
     },
     {
+      name: "Newsreader",
+      cssVariable: "--font-newsreader",
+      provider: fontProviders.google(),
+      fallbacks: ["Georgia", "serif"],
+      weights: [400, 600],
+      styles: ["normal", "italic"],
+      formats: ["woff2"],
+    },
+    {
       name: "Google Sans Code",
       cssVariable: "--font-google-sans-code",
       provider: fontProviders.google(),

@@ -66,10 +66,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
         Links I saved with a short note, plus longer posts and images.
       </p>
       {socials.length > 0 && (
-        <div class="mt-4 flex max-sm:flex-col sm:items-center">
-          <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">
-            {t.home.socialLinks}:
-          </div>
+        <div class="mt-4">
           <Socials />
         </div>
       )}
@@ -98,6 +95,12 @@ const homePath = getRelativeLocaleUrl(locale, "");
         aria-label="Topics"
         class="flex flex-wrap gap-x-6 gap-y-2 pt-8 pb-2 text-[0.95rem]"
       >
+        <a
+          href={getRelativeLocaleUrl(locale, "categories")}
+          class="text-muted-foreground hover:text-foreground"
+        >
+          Browse by category
+        </a>
         {topics.map(({ slug, label }) => (
           <a
             href={getRelativeLocaleUrl(locale, `categories/${slug}`)}
@@ -113,7 +116,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
     {listPosts.length > 0 && (
       <section id="recent-posts" class="pt-6 pb-6">
         <h2 class="sr-only">{t.home.recentPosts}</h2>
-        <ul class="sm:columns-2 sm:gap-14">
+        <ul>
           {listPosts.map(data => (
             <Card variant="h3" {...data} />
           ))}

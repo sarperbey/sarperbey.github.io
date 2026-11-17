@@ -12,6 +12,7 @@ dayjs.extend(timezone);
 
 type Props = {
   class?: string;
+  variant?: "default" | "inline";
   size?: "sm" | "lg";
   pubDatetime: string | Date;
   timezone?: string;
@@ -22,6 +23,7 @@ const {
   pubDatetime,
   modDatetime,
   size = "sm",
+  variant = "default",
   class: className = "",
   timezone: postTimezone,
 } = Astro.props;
@@ -35,7 +37,18 @@ const datetime = dayjs(isModified ? modDatetime : pubDatetime).tz(
 );
 
 const date = datetime.format("D MMM, YYYY");
+
+// Inline variant: plain "6 Jul 2024" for meta lines. Always the publication date.
+const publishedDate = dayjs(pubDatetime).tz(
+  resolveTimezone(postTimezone ?? config.site.timezone)
+);
 ---
+
+{variant === "inline" ? (
+  <time class={className} datetime={publishedDate.toISOString()}>
+    {publishedDate.format("D MMM YYYY")}
+  </time>
+) : (
 
 <div
   class:list={["text-muted-foreground flex items-center gap-x-2", className]}
@@ -58,3 +71,4 @@ const date = datetime.format("D MMM, YYYY");
     {date}
   </time>
 </div>
+)}

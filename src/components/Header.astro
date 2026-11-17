@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import IconUnderline from "@/assets/icons/IconUnderline.svg";
+import IconLogo from "@/assets/icons/IconLogo.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
@@ -53,8 +53,9 @@ const isActive = (path: string) => {
   <div class="border-border bg-background relative flex w-full items-baseline justify-between border-b py-4 sm:items-center sm:py-6">
     <a
       href={getRelativeLocaleUrl(locale, "")}
-      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+      class="absolute flex items-center gap-2 py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
     >
+      <IconLogo class="size-6 shrink-0 sm:size-7" aria-hidden="true" />
       {site.title}
     </a>
     <nav
@@ -150,9 +151,9 @@ const isActive = (path: string) => {
               <IconArchive class="hidden sm:absolute sm:top-1/2 sm:left-1/2 sm:block sm:size-6 sm:-translate-x-1/2 sm:-translate-y-1/2" />
               <span class="sm:sr-only">{t.nav.archives}</span>
               {isActive("/archives") && (
-                <IconUnderline
+                <span
                   aria-hidden="true"
-                  class="scale-125 max-sm:hidden sm:absolute sm:bottom-0 sm:w-6"
+                  class="active-bar max-sm:hidden sm:absolute sm:bottom-0"
                 />
               )}
             </LinkButton>
@@ -169,9 +170,9 @@ const isActive = (path: string) => {
               <IconSearch class="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2" />
               <span class="sr-only">{t.nav.search}</span>
               {isActive("/search") && (
-                <IconUnderline
+                <span
                   aria-hidden="true"
-                  class="absolute bottom-0 w-6 scale-125 max-sm:inset-s-2"
+                  class="active-bar absolute bottom-0 max-sm:inset-s-2"
                 />
               )}
             </LinkButton>

@@ -18,33 +18,28 @@ const category = slugifyStr(data.tags[0] ?? "others");
 ---
 
 <li class="link-card">
-  <div
-    class="text-xs font-medium tracking-wider uppercase"
-    style={`color: ${categoryColor(category)}`}
-  >
-    {categoryLabel(category)} · {lang}
-  </div>
   <a
     href={getPostUrl(id, filePath, Astro.currentLocale)}
-    class="u-sweep inline-block"
+    class="u-sweep link-card-main inline-block"
   >
     <Heading
-      class="font-display mt-1 text-2xl leading-tight"
+      class="font-display text-[1.75rem] leading-tight sm:text-3xl"
       transition:name={toTransitionName(id)}
     >
       {title}
     </Heading>
   </a>
-  <Datetime {...props} />
-  <p class="text-muted-foreground">{description}</p>
-  {link && (
-    <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="hover:text-accent mt-1 inline-block text-sm underline decoration-dashed underline-offset-4"
-    >
-      {host} ↗
-    </a>
-  )}
+  {description && <p class="link-card-note">{description}</p>}
+  <div class="link-card-meta">
+    {host && (
+      <a href={link} rel="noopener noreferrer" class="link-card-host">
+        {host}
+      </a>
+    )}
+    <Datetime {...props} variant="inline" />
+    <span style={`color: ${categoryColor(category)}`}>
+      {categoryLabel(category)}
+    </span>
+    {lang !== "en" && <span class="uppercase">{lang}</span>}
+  </div>
 </li>
