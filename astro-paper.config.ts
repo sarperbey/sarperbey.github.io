@@ -30,6 +30,17 @@ export default defineAstroPaperConfig({
   },
   socials: [
     { name: "github",   url: "https://github.com/sarperbey" },
+    {
+      name: "linkedin",
+      // TODO: replace with the exact profile URL (https://www.linkedin.com/in/...)
+      url: "https://www.linkedin.com/search/results/people/?keywords=sarper%20dost",
+      linkTitle: "Sarper Dost on LinkedIn",
+    },
+    {
+      name: "instagram",
+      url: "https://www.instagram.com/sarperbey/",
+      linkTitle: "sarperbey on Instagram",
+    },
   ],
   shareLinks: [
     { name: "whatsapp", url: "https://wa.me/?text=" },
