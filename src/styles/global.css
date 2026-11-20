@@ -20,6 +20,10 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+  h1, h2, h3 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
 }
 
 @utility max-w-app {
