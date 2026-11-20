@@ -21,7 +21,7 @@ const category = slugifyStr(data.tags[0] ?? "others");
     href={getPostUrl(id, filePath, Astro.currentLocale)}
     class="u-sweep link-card-main inline-block"
   >
-    <Heading class="font-display text-[1.75rem] leading-tight sm:text-3xl">
+    <Heading class="font-display text-[1.75rem] leading-tight sm:text-3xl break-words">
       {title}
     </Heading>
   </a>
